@@ -4,7 +4,7 @@ if __name__ == "__main__":
     # Run with defaults
 
     # To modify config or settings you can use the following:
-    # bacpipe.config.audio_dir = "data/audio"
+    # bacpipe.config.audio_dir = "data/audio"cif
     # this will specify that the audio data is in 'data/audio'
     
     # bacpipe.settings.main_results_dir = "../bacpipe_results"

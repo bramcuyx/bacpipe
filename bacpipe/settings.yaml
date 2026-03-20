@@ -4,11 +4,11 @@
 
 # specify your device, if unsure use 'cpu', if you are working on a 
 # gpu computer use 'cuda'
-device: 'cpu'
+device: 'cuda'
 
 # fixed path, model checkpoints are/should be stored here
 # this is also where bacpipe will look for existing checkpoints
-model_base_path: bacpipe/model_checkpoints
+model_base_path: /data/bramcuyx/bacpipe/model_checkpoints
 
 # If you have an annotations.csv file in the format specified in the 
 # ReadMe file, you can choose to only create embeddings for the segments
@@ -72,14 +72,14 @@ default_label_keys: [
 
 # key corresponding to the label in the annotation.csv file, if labeled data exists
 # by default this is species, but change if needed
-label_column: 'species'
+label_column: 'event'
 
 ## CLASSIFICATION SETTINGS ##
 
 # if the model has a classifier that ships with the model, by default 
 # it will be used, to provide another option to colorcode embeddings
 # and visualize differences between embeddings. 
-run_pretrained_classifier: True
+run_pretrained_classifier: False
 classifier_threshold: 0.5
 
 
@@ -87,16 +87,12 @@ class_configs:
   config_1:
     bool: True
     name: "linear"
-    learning_rate: 0.001
+    learning_rate: 0.01
     batch_size: 64
     num_epochs: 10
-    dataset_csv_path: classification_dataframe.csv
+    dataset_csv_path: light_20260319_dataset.csv
     shuffle: False
-  config_2:
-    bool: True
-    name: "knn"
-    n_neighbors: 15
-    dataset_csv_path: classification_dataframe.csv
+  
 
 
 ## CLUSTERING SETTINGS ##
@@ -140,7 +136,7 @@ distance_configs:
 # fixed path, embeddings will be stored here, advised not to change
 # because this is also where bacpipe will look for existing embeddings
 ### IMPORTANT! WINODWS USERS DON'T USE QUOTATIONS HERE
-main_results_dir :      bacpipe_results
+main_results_dir :      /data/bramcuyx/bacpipe_results
 embed_parent_dir :      embeddings
 dim_reduc_parent_dir :  dim_reduced_embeddings
 evaluations_dir :       evaluations

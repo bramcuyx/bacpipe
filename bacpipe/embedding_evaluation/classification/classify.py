@@ -146,6 +146,8 @@ def classify(paths, dataset_csv_path, embeds, config="linear", **kwargs):
         performance dictionary
     """
     df = pd.read_csv(paths.labels_path.joinpath(dataset_csv_path))
+    # Keep labels as plain strings to avoid numpy scalar keys in downstream JSON dumps.
+    df["label"] = df["label"].astype(str)
 
     label2index = {label: i for i, label in enumerate(df.label.unique())}
 
