@@ -30,6 +30,7 @@ def train_linear_classifier(
     learning_rate,
     num_epochs,
     device="cuda:0",
+    loss = "cross_entropy",
     **kwargs,
 ):
     """
@@ -59,7 +60,11 @@ def train_linear_classifier(
 
     # Define optimizer and loss function
     optimizer = torch.optim.Adam(linear_classifier.parameters(), lr=learning_rate)
-    criterion = nn.CrossEntropyLoss()
+    if loss == "cross_entropy":
+
+        criterion = nn.CrossEntropyLoss()
+    elif loss == "binary_cross_entropy":
+        criterion = nn.BCELoss()
 
     # Training loop
     for epoch in range(num_epochs):
